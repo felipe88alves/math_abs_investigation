@@ -1,7 +1,4 @@
-<!--
-Please answer these questions before submitting your issue. Thanks!
--->
-
+Issue # [55929](https://github.com/golang/go/issues/55929)
 ### What version of Go are you using (`go version`)?
 
 <pre>
@@ -9,7 +6,7 @@ $ go version
 local: go version go1.19.1 linux/amd64
 </pre>
 
-Although most test were run using gotip
+Although all tests were executed using gotip
 <pre>
 $ gotip version
 go version devel go1.20-53773a5 Wed Sep 28 11:50:58 2022 +0000 linux/amd64
@@ -71,7 +68,7 @@ Given the introduction of generics and the improvements of the functionality in 
 This investigation was specific to the [Abs](https://github.com/golang/go/blob/master/src/math/abs.go) function of the math package. This functions receives a float64 data type as argument and returns the its absolute number also as a float64.
 I saw that @randall77 and others worked on optimizations for the `Abs` function that rely on IEE 754 binary representation of floats. As such, the `Abs` function currently only supports float64 type as an argument.
 
-The proposal was to use generics to take in any of the following basic number data types and object with their underlying types (~):
+The proposal was to use generics to take in any of the following basic number data types or objects with underlying basic number data types (~):
 - ~int,
 - ~int8,
 - ~int16,
@@ -80,9 +77,9 @@ The proposal was to use generics to take in any of the following basic number da
 - ~float32,
 - ~float64
 
-The underlying methodology for the function `Abs` would not be modified.
+This proposal does not affect the current underlying methodology for the `Abs` function.
 
-The advantage of this proposal is that it makes it simpler for the user to interact with it. As the user will no longer be required to include an explicit conversion to and from float64 (in the cases where the original number is not a float64).
+The advantage of this proposal is that it makes it simpler for the user to interact with it. As the user will no longer be required to include an explicit conversion to and from float64 (when working with non float64 numbers).
 
 The possible disadvantage of this proposal is that it might degrade the improvements previously introduced to the function.
 
@@ -122,14 +119,14 @@ var number int64 = 5
 _ = GenericAbsT(number)
 ```
 
-The type conversions are in place to perform an end-to-end comparison.  ## EDIT this?
+The type conversions are in place to perform an end-to-end comparison of the user's intent.
 Each of the benchmark test variants was run 100 times. Each benchmark test ran 1000000000 executions.
 Benchmark tests were done using the gotip version mentioned previously.
 
 Benchmark tests are aggreated using benchstat and analysed manually.
 A bash script automates the testing and outputs the final result in `<type>Benchstat.txt` files under the `benchmark_result_<test_iteration>` directory.
 
-Code and script reproduce the test can be found in: ##ADD GH LINK
+Code and script reproduce the test can be found in: https://github.com/felipe88alves/math_abs_investigation
 
 ### Example of test Process
 ```
@@ -166,6 +163,8 @@ GenericAbsReturnT      0.00         0.00         0.00         0.00            0.
 
 The results negate the existance of degredation in terms of performance in average execution time, the average number of bytes allocated per operation and the number of allocations per operation.
 
-The recommendation from this analysis is to **apply generics with the proposed contraints to the `math.Abs` function as a mean to improve user experience and to reduce the need for type conversion**.
+The recommendation from this analysis is:
+- To **apply generics with the proposed contraints to the `math.Abs` function as a mean to improve user experience and to reduce the need for type conversion**.
+- To implement both parameter and return of the `Abs` function as generics.
 
 Please let me know if you're ok with this proposal, if you require any further testing or have any suggestions.
