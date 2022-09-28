@@ -1,0 +1,14 @@
+name \ time/op                       benchmark_results_2/structFloat64/BenchmarkAbs.txt  benchmark_results_2/structFloat64/BenchmarkGenericAbsReturnFloat.txt  benchmark_results_2/structFloat64/BenchmarkGenericAbsReturnT.txt
+Abs_structFloat64                                                           0.24ns ± 6%
+GenericAbsReturnFloat_structFloat64                                                                                                               0.23ns ± 3%
+GenericAbsReturnT_structFloat64                                                                                                                                                                                     0.24ns ± 7%
+
+name \ alloc/op                      benchmark_results_2/structFloat64/BenchmarkAbs.txt  benchmark_results_2/structFloat64/BenchmarkGenericAbsReturnFloat.txt  benchmark_results_2/structFloat64/BenchmarkGenericAbsReturnT.txt
+Abs_structFloat64                                                            0.00B     
+GenericAbsReturnFloat_structFloat64                                                                                                                0.00B     
+GenericAbsReturnT_structFloat64                                                                                                                                                                                      0.00B     
+
+name \ allocs/op                     benchmark_results_2/structFloat64/BenchmarkAbs.txt  benchmark_results_2/structFloat64/BenchmarkGenericAbsReturnFloat.txt  benchmark_results_2/structFloat64/BenchmarkGenericAbsReturnT.txt
+Abs_structFloat64                                                             0.00     
+GenericAbsReturnFloat_structFloat64                                                                                                                 0.00     
+GenericAbsReturnT_structFloat64                                                                                                                                                                                       0.00     

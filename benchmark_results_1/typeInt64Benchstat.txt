@@ -1,0 +1,14 @@
+name \ time/op                   benchmark_results_2/typeInt64/BenchmarkAbs.txt  benchmark_results_2/typeInt64/BenchmarkGenericAbsReturnFloat.txt  benchmark_results_2/typeInt64/BenchmarkGenericAbsReturnT.txt
+Abs_typeInt64                                                       0.24ns ± 9%
+GenericAbsReturnFloat_typeInt64                                                                                                       0.24ns ± 7%
+GenericAbsReturnT_typeInt64                                                                                                                                                                         0.24ns ± 8%
+
+name \ alloc/op                  benchmark_results_2/typeInt64/BenchmarkAbs.txt  benchmark_results_2/typeInt64/BenchmarkGenericAbsReturnFloat.txt  benchmark_results_2/typeInt64/BenchmarkGenericAbsReturnT.txt
+Abs_typeInt64                                                        0.00B     
+GenericAbsReturnFloat_typeInt64                                                                                                        0.00B     
+GenericAbsReturnT_typeInt64                                                                                                                                                                          0.00B     
+
+name \ allocs/op                 benchmark_results_2/typeInt64/BenchmarkAbs.txt  benchmark_results_2/typeInt64/BenchmarkGenericAbsReturnFloat.txt  benchmark_results_2/typeInt64/BenchmarkGenericAbsReturnT.txt
+Abs_typeInt64                                                         0.00     
+GenericAbsReturnFloat_typeInt64                                                                                                         0.00     
+GenericAbsReturnT_typeInt64                                                                                                                                                                           0.00     
